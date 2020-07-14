@@ -17,7 +17,13 @@
     
                 <tr>
                     <td>
-                        <label>Upload Image</label>
+                        <label>Type</label>
+                    </td>
+                     <td>
+                        <select>
+                            <option value="1">On</option>
+                            <option value="0">Off</option>
+                        </select>
                     </td>
                     <td>
                         <input type="file" name="image"/>

@@ -69,7 +69,7 @@
 										if($check_cart){
 										$sum = Session::get("sum");
 										$qty = Session::get("qty");
-										echo $sum.' '.'Đ'.'-'.'Qty:'.$qty;
+										echo $fm->format_currency($sum).' '.'Đ'.'-'.'Qty:'.$qty;
 									}else {
 										echo 'Empty';
 									}

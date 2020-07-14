@@ -61,7 +61,7 @@
 							<tr>
 								<td><?php echo $result['productName'] ?></td>
 								<td><img src="admin/uploads/<?php echo $result['image'] ?>" alt=""/></td>
-								<td><?php echo $result['price'] ?></td>
+								<td><?php echo $fm->format_currency($result['price'])." "."VNĐ" ?></td>
 								<td>
 									<form action="" method="post">
 										<input type="hidden" name="cartId"  value="<?php echo $result['cartId']?>" />
@@ -71,7 +71,7 @@
 								</td>
 								<td><?php 
 									$tolal = $result['price'] * $result['quantity'];
-									echo $tolal;	
+									echo $fm->format_currency($tolal)." "."VNĐ";	
 								 ?></td>
 								<td><a onclick="return comfirm('Are you want to delete');" href="?cartid=<?php echo $result['cartId']?>">Delete</a></td>
 							</tr>
@@ -94,7 +94,7 @@
 								<th>Sub Total : </th>
 								<td><?php 
 									
-									echo $suptotal;	
+									echo $fm->format_currency($suptotal)." "."VNĐ";
 									Session::set('sum', $suptotal);		
 									Session::set('qty', $qty);					
 								 ?></td>
@@ -108,7 +108,7 @@
 								<td><?php 
 									$vat = $suptotal * 0.1;
 									$gtotal = $suptotal + $vat;
-									echo $gtotal;
+									echo  $fm->format_currency($gtotal)." "."VNĐ";
 								 ?> </td>
 							</tr>
 					   </table>

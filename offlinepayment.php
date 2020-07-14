@@ -85,7 +85,7 @@
 								<td><?php echo $i; ?></td>
 								<td><?php echo $result['productName'] ?></td>
 								
-								<td><?php echo $result['price'].' '.'VNĐ' ?></td>
+								<td><?php echo $fm->format_currency($result['price']).' '.'VNĐ' ?></td>
 								<td>
 									
 										
@@ -94,7 +94,7 @@
 								</td>
 								<td><?php 
 									$tolal = $result['price'] * $result['quantity'];
-									echo $tolal.' '.'VNĐ';	
+									echo $fm->format_currency($tolal).' '.'VNĐ';	
 								 ?></td>
 								
 							</tr>
@@ -117,7 +117,7 @@
 								<th>Sub Total : </th>
 								<td><?php 
 									
-									echo $suptotal.' '.'VNĐ';	
+									echo $fm->format_currency($suptotal).' '.'VNĐ';	
 									Session::set('sum', $suptotal);		
 									Session::set('qty', $qty);					
 								 ?></td>
@@ -131,7 +131,7 @@
 								<td><?php 
 									$vat = $suptotal * 0.1;
 									$gtotal = $suptotal + $vat;
-									echo $gtotal.' '.'VNĐ';
+									echo $fm->format_currency($gtotal).' '.'VNĐ';
 								 ?> </td>
 							</tr>
 							

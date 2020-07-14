@@ -53,7 +53,7 @@
       $vat = $amount * 0.1; 
 
       $total = $vat + $amount ;
-      echo $total.'VNĐ';
+      echo $fm->format_currency($total).'VNĐ';
 
       ?></p>
       <p class="success_note">We will contact as soon as possiable. Please see your order details here <a href="orderdetails.php">Click Here</a>></p>
