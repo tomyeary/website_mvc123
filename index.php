@@ -32,6 +32,7 @@
 					}
 				 ?>
 			</div>
+
 			<div class="content_bottom">
     		<div class="heading">
     		<h3>New Products</h3>
@@ -52,8 +53,23 @@
 					 <p><span class="price"><?php echo $fm->format_currency($result_new['price'])." "."VNĐ" ?></span></p>
 				     <div class="button"><span><a href="details.php?proid=<?php echo $result_new['productId'] ?>" class="details">Details</a></span></div>
 				</div>
+
 				<?php 
 					}
+					}
+				 ?>
+			</div>
+			<div class="" style="text-align: center;">
+				
+				<?php 
+					$product_all = $product->get_all_product();
+					$product_count = mysqli_num_rows($product_all);
+					$product_button =ceil($product_count/4);
+					$i= 1;
+					
+					for ($i=1;$i<=$product_button;$i++)
+					{
+						echo '<a style="margin:0 5px;" href="index.php?trang='.$i.'">'.$i.'</a>';
 					}
 				 ?>
 			</div>
