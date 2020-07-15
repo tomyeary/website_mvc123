@@ -28,6 +28,9 @@
     	$quantity = $_POST['quantity'];
         $AddtoCart = $ct->add_to_cart($quantity,$id);
     }
+    if (isset($_POST['binhluan_submit'])) {
+    	$binhluan_insert = $cs->insert_binhluan();
+    }
   ?>
 
   
@@ -160,6 +163,27 @@
  				</div>
  		</div>
  	</div>
+ 	<!-- <div class="binhluan">
+ 		<div class="row">
+ 			<div class="col-md-8">
+		 		<h5>Ý kiến sản phẩm</h5>
+		 		<?php 
+		 			if (isset($binhluan_insert)) {
+		 				echo $binhluan_insert;
+		 			}
+		 		 ?>
+		 		<form action="" method="POST">
+		 			<p><input type="hidden" value="<?php echo $id ?>" name="product_id_binhluan"></p>
+			 		<p><input type="text" placeholder="Điền tên" class="form-control" name="tennguoibinhluan"></p>
+			 		<p><textarea rows="7" style="resize: none;" placeholder="Bình luận" class="form-control" name="binhluan"></textarea></p>
+			 		<p><input type="submit" name="binhluan_submit" class="btn btn-success" value="Gửi bình luận"></p>
+		 		</form>
+ 			</div>
+ 		</div>
+</textarea>
+ -->
+	<div class="fb-comments" data-href="http://localhost:81/website_mvc" data-numposts="5" data-width=""></div>
+</div>
 	</div>
 
 <?php

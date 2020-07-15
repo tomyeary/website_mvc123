@@ -19,7 +19,30 @@
 			$this->db = new Database();
 			$this->fm = new Format();
 		}
-
+		public function insert_binhluan()
+		{
+			$product_id =   $_POST['product_id_binhluan'];
+			$tenbinhluan = $_POST['tennguoibinhluan'];
+			$binhluan = $_POST['binhluan'];
+			if ($tenbinhluan==''||$binhluan=='') 
+			{
+				$alert = "<span class='error'>Fiels must be not empty</span>";
+				return $alert;
+			}else
+			{
+				$query = "INSERT INTO tbl_comment(tenbinhluan, binhluan, product_id) VALUES('$tenbinhluan','$binhluan','$product_id')";
+					$result = $this->db->insert($query);
+						if($result)
+						{
+							$alert = "<span class='success'>The comment has been approved</span>";
+							return $alert;
+						}else
+						{
+							$alert = "<span class='success'>The comment has't been approved</span>";
+							return $alert;
+						}
+			}
+		}
 		public function  insert_customers($data)
 		{
 			$name = mysqli_real_escape_string($this->db->link,$data['name']);
