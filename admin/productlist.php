@@ -21,7 +21,12 @@
 			<thead>
 				<tr>
 					<th>ID</th>
+					<th>Code</th>
 					<th>Product Name</th>
+					<th>Import</th>
+					<th>Quantity</th>
+					<th>Product Soldout</th>
+					<th>Product Remaint</th>
 					<th>Product Price</th>
 					<th>Product Image</th>
 					<th>Category</th>
@@ -43,7 +48,12 @@
 				 ?>
 				<tr class="odd gradeX">
 					<td><?php echo $i ?></td>
+					<td><?php echo $result['product_code'] ?></td>
 					<td><?php echo $result['productName'] ?></td>
+					<td><a href="productmorequantity.php?productid=<?php echo $result['productId'] ?>">Nhập hàng</a></td>
+					<td><?php echo $result['quantity'] ?></td>
+					<td><?php echo $result['product_soldout'] ?></td>
+					<td><?php echo $result['product_remain'] ?></td>
 					<td><?php echo $result['price'] ?></td>
 					<td><img src="uploads/<?php echo $result['image'] ?>"width="50"></td>
 					<td><?php echo $result['catName'] ?></td>

@@ -20,16 +20,31 @@
 			$this->fm = new Format();
 		}
 
-		//thêm danh mục sản phẩm
+		public function show_product_warehouse()
+		{
+			$query = 
+			"SELECT tbl_product.*, tbl_warehouse.*
+
+			 FROM tbl_product INNER JOIN tbl_warehouse ON tbl_product.productId = tbl_warehouse.id_sanpham
+								
+			 order by tbl_warehouse.sl_ngaynhap desc ";
+
+		
+			$result = $this->db->select($query);
+			return $result;
+		}
+		
 		public function insert_product($data, $files)
 		{
 			
 
 			$productName = mysqli_real_escape_string($this->db->link,$data['productName']);
+			$product_code =  mysqli_real_escape_string($this->db->link,$data['product_code']);
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
 			$category = mysqli_real_escape_string($this->db->link, $data['category']);
 			$product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
 			$price = mysqli_real_escape_string($this->db->link, $data['price']);
+			$quantity =  mysqli_real_escape_string($this->db->link,$data['quantity']);
 			$type = mysqli_real_escape_string($this->db->link, $data['type']);
 			// kiem tra hinh anh va lay hinh anh cho vao folder upload
 			$permited = array('jpg', 'jpeg', 'png', 'gif');
@@ -44,12 +59,12 @@
 
 			
 				
-			if ($productName == "" ||$brand == "" || $category == ""  || $product_desc == "" || $price == "" || $type == "" || $file_name == ""){
+			if ($productName == "" || $product_code=""||$brand == "" || $category == ""  || $product_desc == "" || $price == "" ||$quantity =''|| $type == "" || $file_name == ""){
 				$alert = "<span class='error'>Fiels must be not empty</span>";
 				return $alert;
 			}else{
 				move_uploaded_file($file_temp, $uploaded_image);
-				$query = "	INSERT INTO tbl_product(productName,brandId,catId,product_desc,price,type,image) VALUES('$productName','$brand','$category','$product_desc','$price','$type','$unique_image')";
+				$query = "	INSERT INTO tbl_product(productName,product_code,brandId,catId,product_desc,price,quantity,type,image) VALUES('$productName','$product_code', '$brand','$category','$product_desc','$price','$quantity','$type','$unique_image')";
 				$result = $this->db->insert($query);
 				if($result){
 					$alert = "<span class='success'>Insert product successfully</span>";
@@ -83,16 +98,48 @@
 			return $result;
 		}
 
+		public function update_quantity_product($data,$files,$id)
+		{
+			$product_more_quantity = mysqli_real_escape_string($this->db->link, $data['product_more_quantity']);
+			$product_remain = mysqli_real_escape_string($this->db->link, $data['product_remain']);
+			
+			if($product_more_quantity == ""){
 
+				$alert = "<span class='error'>Fields must be not empty</span>";
+				return $alert; 
+			}else{
+					$qty_total = $product_more_quantity + $product_remain;
+					//Nếu người dùng không chọn ảnh
+					$query = "UPDATE tbl_product SET
+					
+					product_remain = '$qty_total'
+
+					WHERE productId = '$id'";
+					
+					}
+					$query_warehouse = "INSERT INTO tbl_warehouse(id_sanpham,sl_nhap) VALUES('$id','$product_more_quantity') ";
+					$result_insert = $this->db->insert($query_warehouse);
+					$result = $this->db->update($query);
+
+					if($result){
+						$alert = "<span class='success'>success</span>";
+						return $alert;
+					}else{
+						$alert = "<span class='error'>failed</span>";
+						return $alert;
+					}
+		}
 		//cập nhập sản phẩm
 		public function update_product($data,$files, $id)
 		{
 			
 			$productName = mysqli_real_escape_string($this->db->link,$data['productName']);
+			$product_code = mysqli_real_escape_string($this->db->link, $date['product_code']);
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
 			$category = mysqli_real_escape_string($this->db->link, $data['category']);
 			$product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
 			$price = mysqli_real_escape_string($this->db->link, $data['price']);
+			$quantity = mysqli_real_escape_string($this->db->link,$data['quantity']);
 			$type = mysqli_real_escape_string($this->db->link, $data['type']);
 			// kiem tra hinh anh va lay hinh anh cho vao folder upload
 			$permited = array('jpg', 'jpeg', 'png', 'gif');
@@ -106,7 +153,7 @@
 			$uploaded_image = "uploads/".$unique_image;
 
 
-			if ($productName == "" ||$brand == "" || $category == ""  || $product_desc == "" || $price == "" || $type == ""){
+			if ($productName == "" ||$product_code=="" ||$brand == "" || $category == ""  || $product_desc == "" || $price == "" || $quantity=="" || $type == ""){
 				$alert = "<span class='error'>category must be not empty</span>";
 				return $alert;
 			}else
@@ -132,6 +179,7 @@
 					catId = '$category',
 					type = '$type',
 					price = '$price',
+					quantity = '$quantity',
 					image = '$unique_image',
 					product_desc = '$product_desc'
 					WHERE productId = '$id'";
@@ -146,6 +194,7 @@
 					catId = '$category',
 					type = '$type',
 					price = '$price',	
+					quantity = '$quantity',
 					product_desc = '$product_desc'
 					WHERE productId = '$id'";
 				}
@@ -428,6 +477,14 @@
 					$alert = "<span class='error'> Sli deleted not success </span>";
 					return $alert;	
 				}
+		}
+
+		public function search_product($tukhoa)
+		{
+			$tukhoa = $this->fm->validation($tukhoa);
+			$query = "SELECT * FROM tbl_product WHERE productName LIKE '%$tukhoa%' ";
+			$result = $this->db->select($query);
+			return $result;
 		}
 
 	}

@@ -13,7 +13,7 @@
 
 <div class="grid_10">
     <div class="box round first grid">
-        <h2>Thêm sản phẩm</h2>
+        <h2>Add Product</h2>
         <div class="block">  
         <?php 
             if (isset($insertProduct))
@@ -32,6 +32,16 @@
                         <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" />
                     </td>
                 </tr>
+                <tr>
+                    <td>
+                        <label>Code </label>
+                    </td>
+                    <td>
+                        <input name="product_code" type="text" placeholder="Code Product..." class="medium" />
+                    </td>
+                </tr>
+                </tr>
+                 
                 <tr>
                     <td>
                         <label>Category</label>
@@ -94,6 +104,14 @@
                     </td>
                     <td>
                         <input type="text" name="price" placeholder="Enter Price..." class="medium" />
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <label>Quantity</label>
+                    </td>
+                    <td>
+                        <input type="text" name="quantity" placeholder="Enter Quantity..." class="medium" />
                     </td>
                 </tr>
             

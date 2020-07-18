@@ -47,6 +47,14 @@
                 </tr>
                 <tr>
                     <td>
+                        <label>Code</label>
+                    </td>
+                    <td>
+                        <input type="text" name="productName" value="<?php echo $result_product['product_code'] ?>" class="medium" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <label>Category</label>
                     </td>
                     <td>
@@ -117,6 +125,14 @@
                     </td>
                     <td>
                         <input type="text" value="<?php echo $result_product['price'] ?>" name="price"  class="medium" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label>Quantity</label>
+                    </td>
+                    <td>
+                        <input type="text" value="<?php echo $result_product['quantity'] ?>" name="quantity"  class="medium" />
                     </td>
                 </tr>
             

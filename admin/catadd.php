@@ -13,7 +13,7 @@
  
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Thêm danh mục</h2>
+                <h2>Add Category</h2>
                 
                <div class="block copyblock"> 
                 <?php 

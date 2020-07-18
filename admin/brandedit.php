@@ -22,7 +22,7 @@
  
         <div class="grid_10">
             <div class="box round first grid">
-                <h2>Sửa thương hiệu</h2>
+                <h2>Edit Brain</h2>
                 
                <div class="block copyblock"> 
                 <?php 
