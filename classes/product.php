@@ -39,11 +39,7 @@
 			
 
 			$productName = mysqli_real_escape_string($this->db->link,$data['productName']);
-
 			$product_code =  mysqli_real_escape_string($this->db->link,$data['product_code']);
-
-			$product_code = mysqli_real_escape_string($this->db->link, $data['product_code']);
-
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
 			$category = mysqli_real_escape_string($this->db->link, $data['category']);
 			$product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
@@ -66,7 +62,6 @@
 
 			if ($productName == "" || $product_code=""||$brand == "" || $category == ""  || $product_desc == "" || $price == "" ||$quantity =''|| $type == "" || $file_name == ""){
 
-			if ($productName == "" ||$product_code == "" || $quantity == ""  || $brand == "" || $category == "" || $product_desc == "" || $price == "" ||$type == ""||$file_name == ""){
 
 				$alert = "<span class='error'>Fiels must be not empty</span>";
 				return $alert;
@@ -74,7 +69,7 @@
 				move_uploaded_file($file_temp, $uploaded_image);
 
 				$query = "	INSERT INTO tbl_product(productName,product_code,brandId,catId,product_desc,price,quantity,type,image) VALUES('$productName','$product_code', '$brand','$category','$product_desc','$price','$quantity','$type','$unique_image')";
-				$query = "	INSERT INTO tbl_product(productName,product_code,quantity,brand,category,product_desc,price,type,image) VALUES('$productName','$product_code','$quantity','$brand','$category','$product_desc','$price','$type','$unique_image')";
+				
 				$result = $this->db->insert($query);
 				if($result){
 					$alert = "<span class='success'>Insert product successfully</span>";
@@ -84,7 +79,7 @@
 					return $alert;	
 				}
 			}
-		}
+		
 	}
 
 		 
@@ -186,6 +181,7 @@
 					}
 					$query = "UPDATE tbl_product SET 
 					productName = '$productName',
+					product_code = '$product_code';
 					brandId = '$brand',
 					catId = '$category',
 					type = '$type',
@@ -201,6 +197,7 @@
 				{
 					$query = "UPDATE tbl_product SET
 					productName = '$productName',
+					product_code = '$product_code';
 					brandId = '$brand',
 					catId = '$category',
 					type = '$type',

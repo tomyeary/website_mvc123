@@ -40,7 +40,6 @@
 
                         <input name="product_code" type="text" placeholder="Code Product..." class="medium" />
 
-                        <input name="product_code" type="text" placeholder="Nhập code sản phẩm..." class="medium" />
                     </td>
                 </tr>
                 </tr>
