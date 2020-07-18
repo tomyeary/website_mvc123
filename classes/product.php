@@ -138,14 +138,13 @@
 		//cập nhập sản phẩm
 		public function update_product($data,$files, $id)
 		{
-			
 			$productName = mysqli_real_escape_string($this->db->link,$data['productName']);
-			$product_code = mysqli_real_escape_string($this->db->link, $date['product_code']);
+			$product_code =  mysqli_real_escape_string($this->db->link,$data['product_code']);
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
 			$category = mysqli_real_escape_string($this->db->link, $data['category']);
 			$product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
 			$price = mysqli_real_escape_string($this->db->link, $data['price']);
-			$quantity = mysqli_real_escape_string($this->db->link,$data['quantity']);
+			$quantity =  mysqli_real_escape_string($this->db->link,$data['quantity']);
 			$type = mysqli_real_escape_string($this->db->link, $data['type']);
 			// kiem tra hinh anh va lay hinh anh cho vao folder upload
 			$permited = array('jpg', 'jpeg', 'png', 'gif');
@@ -181,7 +180,7 @@
 					}
 					$query = "UPDATE tbl_product SET 
 					productName = '$productName',
-					product_code = '$product_code';
+					product_code = '$product_code',
 					brandId = '$brand',
 					catId = '$category',
 					type = '$type',
@@ -197,7 +196,7 @@
 				{
 					$query = "UPDATE tbl_product SET
 					productName = '$productName',
-					product_code = '$product_code';
+					product_code = '$product_code',
 					brandId = '$brand',
 					catId = '$category',
 					type = '$type',

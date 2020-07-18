@@ -50,7 +50,7 @@
                         <label>Code</label>
                     </td>
                     <td>
-                        <input type="text" name="productName" value="<?php echo $result_product['product_code'] ?>" class="medium" />
+                        <input type="text" name="product_code" value="<?php echo $result_product['product_code'] ?>" class="medium" />
                     </td>
                 </tr>
                 <tr>

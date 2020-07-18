@@ -58,6 +58,7 @@
 				<tr class="odd gradeX">
 					<td><?php echo $i ?></td>
 					<td><?php echo $result['product_code'] ?></td>
+					<td><?php echo $result['productName'] ?></td>
 					<td>
 						<?php echo $result['quantity'] ?>
 
@@ -84,7 +85,7 @@
 
 					</td>
 					
-					<td><?php echo $result['productName'] ?></td>
+					
 					
 				</tr>
 				<?php

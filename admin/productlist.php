@@ -26,7 +26,7 @@
 					<th>Import</th>
 					<th>Quantity</th>
 					<th>Product Soldout</th>
-					<th>Product Remaint</th>
+					<th>Product Remain</th>
 					<th>Product Price</th>
 					<th>Product Image</th>
 					<th>Category</th>
