@@ -37,7 +37,11 @@
                         <label>Code </label>
                     </td>
                     <td>
+<<<<<<< HEAD
                         <input name="product_code" type="text" placeholder="Code Product..." class="medium" />
+=======
+                        <input name="product_code" type="text" placeholder="Nhập code sản phẩm..." class="medium" />
+>>>>>>> 9f5e4997a43fb38c32ac9580a584fe56bf0d1c4c
                     </td>
                 </tr>
                 </tr>
