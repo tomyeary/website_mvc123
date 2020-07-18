@@ -39,12 +39,11 @@
 			
 
 			$productName = mysqli_real_escape_string($this->db->link,$data['productName']);
-<<<<<<< HEAD
+
 			$product_code =  mysqli_real_escape_string($this->db->link,$data['product_code']);
-=======
+
 			$product_code = mysqli_real_escape_string($this->db->link, $data['product_code']);
-			$quantity = mysqli_real_escape_string($this->db->link,$data['quantity']);
->>>>>>> 9f5e4997a43fb38c32ac9580a584fe56bf0d1c4c
+
 			$brand = mysqli_real_escape_string($this->db->link, $data['brand']);
 			$category = mysqli_real_escape_string($this->db->link, $data['category']);
 			$product_desc = mysqli_real_escape_string($this->db->link, $data['product_desc']);
@@ -64,20 +63,18 @@
 
 			
 				
-<<<<<<< HEAD
+
 			if ($productName == "" || $product_code=""||$brand == "" || $category == ""  || $product_desc == "" || $price == "" ||$quantity =''|| $type == "" || $file_name == ""){
-=======
+
 			if ($productName == "" ||$product_code == "" || $quantity == ""  || $brand == "" || $category == "" || $product_desc == "" || $price == "" ||$type == ""||$file_name == ""){
->>>>>>> 9f5e4997a43fb38c32ac9580a584fe56bf0d1c4c
+
 				$alert = "<span class='error'>Fiels must be not empty</span>";
 				return $alert;
 			}else{
 				move_uploaded_file($file_temp, $uploaded_image);
-<<<<<<< HEAD
+
 				$query = "	INSERT INTO tbl_product(productName,product_code,brandId,catId,product_desc,price,quantity,type,image) VALUES('$productName','$product_code', '$brand','$category','$product_desc','$price','$quantity','$type','$unique_image')";
-=======
 				$query = "	INSERT INTO tbl_product(productName,product_code,quantity,brand,category,product_desc,price,type,image) VALUES('$productName','$product_code','$quantity','$brand','$category','$product_desc','$price','$type','$unique_image')";
->>>>>>> 9f5e4997a43fb38c32ac9580a584fe56bf0d1c4c
 				$result = $this->db->insert($query);
 				if($result){
 					$alert = "<span class='success'>Insert product successfully</span>";
@@ -88,6 +85,7 @@
 				}
 			}
 		}
+	}
 
 		 
 		public function show_product()
