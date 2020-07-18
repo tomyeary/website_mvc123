@@ -32,17 +32,9 @@
 					<th>Quantity Add</th>
 					<th>Behind Import</th>
 					<th>Date import</th>
-
-					<th>Tên sản phẩm</th>
-				
-					<th>Số lượng ban đầu</th>
-					<th>Đã bán</th>
-				
-					<th>Số lượng trước nhập</th>
-					<th>Số lượng thêm</th>
-					<th>Số lượng sau nhập</th>
 					
-					<th>Ngày nhập</th>
+					
+				
 
 
 					
@@ -87,15 +79,6 @@
 					<td>
 						<?php echo $result['sl_nhap'] ?>
 
-					</td>
-					
-					
-					<td>
-						<?php echo $result['product_remain'] - $result['sl_nhap'] ?>
-					<td>
-						<?php echo $result['product_remain'] ?>
-
-					</td>
 					<td>
 						<?php echo $result['sl_ngaynhap'] ?>
 
